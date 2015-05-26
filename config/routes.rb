@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :servicios
   resources :ips
   resources :ips
   resources :ips
