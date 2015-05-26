@@ -5,9 +5,11 @@ one:
   longitud: 1.5
   latitud: 1.5
   horario_atencion: MyString
+  direccion: MyString
 
 two:
   nombre: MyString
   longitud: 1.5
   latitud: 1.5
   horario_atencion: MyString
+  direccion: MyString

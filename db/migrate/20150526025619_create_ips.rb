@@ -5,6 +5,7 @@ class CreateIps < ActiveRecord::Migration
       t.float :longitud
       t.float :latitud
       t.string :horario_atencion
+      t.string :direccion
 
       t.timestamps null: false
     end

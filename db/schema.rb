@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526024008) do
+ActiveRecord::Schema.define(version: 20150526025619) do
 
   create_table "eps", force: :cascade do |t|
     t.string   "nombre",     limit: 255
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20150526024008) do
     t.float    "longitud",         limit: 24
     t.float    "latitud",          limit: 24
     t.string   "horario_atencion", limit: 255
+    t.string   "direccion",        limit: 255
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
   end

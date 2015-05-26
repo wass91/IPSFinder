@@ -69,6 +69,6 @@ class IpsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ip_params
-      params.require(:ip).permit(:nombre, :longitud, :latitud, :horario_atencion)
+      params.require(:ip).permit(:nombre, :longitud, :latitud, :horario_atencion, :direccion)
     end
 end
