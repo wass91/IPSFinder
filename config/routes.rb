@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :ips
   resources :ips
   resources :ips
+  devise_for :admins
+  devise_for :usuarios
   resources :servicios
   resources :ips
   resources :ips
