@@ -30,5 +30,10 @@
     <%= @ip.eps.map {|x| x.to_label}.join ', ' %>
 </p>
 
+<p>
+    <b>Servicios</b>
+    <%= @ip.servicios.map {|x| x.to_label}.join ', ' %>
+</p>
+
 <%= link_to 'Edit', edit_ip_path(@ip) %> |
 <%= link_to 'Back', ips_path %>

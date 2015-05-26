@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526050653) do
-ActiveRecord::Schema.define(version: 20150526034952) do
+ActiveRecord::Schema.define(version: 20150526064303) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -31,7 +30,6 @@ ActiveRecord::Schema.define(version: 20150526034952) do
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
-
 
   create_table "eps", force: :cascade do |t|
     t.string   "nombre",     limit: 255
@@ -54,15 +52,15 @@ ActiveRecord::Schema.define(version: 20150526034952) do
     t.datetime "updated_at",                   null: false
   end
 
-  create_table "ips_eps", id: false, force: :cascade do |t|
-    t.integer "ip_id", limit: 4
-    t.integer "ep_id", limit: 4
-  end
-
   create_table "servicios", force: :cascade do |t|
     t.string   "nombre",     limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "servicios_ips", id: false, force: :cascade do |t|
+    t.integer "servicio_id", limit: 4
+    t.integer "ip_id",       limit: 4
   end
 
   create_table "usuarios", force: :cascade do |t|
