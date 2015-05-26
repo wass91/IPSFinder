@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :ips
   resources :ips
   devise_for :admins
-  devise_for :usuarios
+  devise_for :usuarios, controllers: {registrations: 'usuarios/registrations'}
   resources :servicios
   resources :ips
   resources :ips

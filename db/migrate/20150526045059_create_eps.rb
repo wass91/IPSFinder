@@ -1,5 +1,6 @@
 class CreateEps < ActiveRecord::Migration
   def change
+    drop_table :eps
     create_table :eps do |t|
       t.string :nombre
 
