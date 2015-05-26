@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :ips
+  resources :ips
+  resources :ips
+  resources :eps
   get 'ips/index'
 
   # The priority is based upon order of creation: first created -> highest priority.

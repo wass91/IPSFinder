@@ -1,2 +1,33 @@
-<h1>IPS</h1>
-<p>This is the IPS's main page</p>
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Ips</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Longitud</th>
+      <th>Latitud</th>
+      <th>Horario atencion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ips.each do |ip| %>
+      <tr>
+        <td><%= ip.nombre %></td>
+        <td><%= ip.longitud %></td>
+        <td><%= ip.latitud %></td>
+        <td><%= ip.horario_atencion %></td>
+        <td><%= link_to 'Show', ip %></td>
+        <td><%= link_to 'Edit', edit_ip_path(ip) %></td>
+        <td><%= link_to 'Destroy', ip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ip', new_ip_path %>
