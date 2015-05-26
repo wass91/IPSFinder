@@ -1,0 +1,33 @@
+<%= form_for(@ip) do |f| %>
+  <% if @ip.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ip.errors.count, "error") %> prohibited this ip from being saved:</h2>
+
+      <ul>
+      <% @ip.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :longitud %><br>
+    <%= f.text_field :longitud %>
+  </div>
+  <div class="field">
+    <%= f.label :latitud %><br>
+    <%= f.text_field :latitud %>
+  </div>
+  <div class="field">
+    <%= f.label :horario_atencion %><br>
+    <%= f.text_field :horario_atencion %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

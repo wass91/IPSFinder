@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @ip.nombre %>
+</p>
+
+<p>
+  <strong>Longitud:</strong>
+  <%= @ip.longitud %>
+</p>
+
+<p>
+  <strong>Latitud:</strong>
+  <%= @ip.latitud %>
+</p>
+
+<p>
+  <strong>Horario atencion:</strong>
+  <%= @ip.horario_atencion %>
+</p>
+
+<%= link_to 'Edit', edit_ip_path(@ip) %> |
+<%= link_to 'Back', ips_path %>
