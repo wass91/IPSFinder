@@ -11,12 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526025619) do
+ActiveRecord::Schema.define(version: 20150526050653) do
 
   create_table "eps", force: :cascade do |t|
     t.string   "nombre",     limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "eps_ips", id: false, force: :cascade do |t|
+    t.integer "ip_id", limit: 4
+    t.integer "ep_id", limit: 4
   end
 
   create_table "ips", force: :cascade do |t|
@@ -27,6 +32,11 @@ ActiveRecord::Schema.define(version: 20150526025619) do
     t.string   "direccion",        limit: 255
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+  end
+
+  create_table "ips_eps", id: false, force: :cascade do |t|
+    t.integer "ip_id", limit: 4
+    t.integer "ep_id", limit: 4
   end
 
   create_table "servicios", force: :cascade do |t|

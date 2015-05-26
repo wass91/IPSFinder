@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :eps
+  resources :ips
+  resources :ips
+  resources :ips
   resources :ips
   resources :ips
   resources :ips
