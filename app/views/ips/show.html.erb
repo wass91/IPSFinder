@@ -7,39 +7,71 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCd8AmZ9AKjXd1EdKQnhtB4WcAudJwMHpg"
   type="text/javascript"></script>
 <script>
-
-function initialize() {
     var myCenter=new google.maps.LatLng(<%= @ip.latitud %>,<%= @ip.longitud %>);
-    var mapProp = {
-        center:myCenter,
-        zoom:16,
-        mapTypeId:google.maps.MapTypeId.ROADMAP
-    };
+    var latitud;
+    var longitud;
     
-    var infowindow = new google.maps.InfoWindow({
-      content: "<%= @ip.nombre %>"
-                +"<br><%= @ip.horario_atencion %>"
-                +"<br><%= @ip.direccion %>"
-                +"<br><b>EPS</b>"
-                +"<br><%= @ip.eps.map {|x| x.to_label}.join ', ' %>"
-                +"<br><b>Servicios</b>"
-                +"<br><%= @ip.servicios.map {|x| x.to_label}.join ', ' %>"
-    });
+    function localizame() {
+            if (navigator.geolocation) { /* Si el navegador tiene geolocalizacion */
+                navigator.geolocation.getCurrentPosition(coordenadas);
+            }else{
+                alert('Oops! Tu navegador no soporta geolocalización. Bájate Chrome, que es gratis!');
+            }
+        }
+        
+        function coordenadas(position) {
+            latitud = position.coords.latitude; /*Guardamos nuestra latitud*/
+            longitud = position.coords.longitude; /*Guardamos nuestra longitud*/
+            initialize();
+        }
+    
+    function initialize() {
+        var mapProp = {
+            center:myCenter,
+            zoom:15,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
+        };
+        
+        var infowindow = new google.maps.InfoWindow({
+        content: "<%= @ip.nombre %>"
+                    +"<br><%= @ip.horario_atencion %>"
+                    +"<br><%= @ip.direccion %>"
+                    +"<br><b>EPS</b>"
+                    +"<br><%= @ip.eps.map {|x| x.to_label}.join ', ' %>"
+                    +"<br><b>Servicios</b>"
+                    +"<br><%= @ip.servicios.map {|x| x.to_label}.join ', ' %>"
+        });
 
-    var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+        var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
-    var marker=new google.maps.Marker({
-        position:myCenter,
-        //animation:google.maps.Animation.BOUNCE,
-    });
+        var marker=new google.maps.Marker({
+            position:myCenter,
+            //animation:google.maps.Animation.BOUNCE,
+        });
 
-    marker.setMap(map);
-    google.maps.event.addListener(marker, 'click', function() {
-        infowindow.open(map,marker);
-    });
-}
+        marker.setMap(map);
+        
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map,marker);
+        });
+        
+        //Marcador de usuario
+        var markerUsuario = new google.maps.Marker({
+            position: new google.maps.LatLng(latitud,longitud),
+            //animation:google.maps.Animation.BOUNCE,
+        });
+        var infowindowUsuario = new google.maps.InfoWindow({
+        content: "tu"
+        });
+        
+        markerUsuario.setMap(map);
+        google.maps.event.addListener(markerUsuario, 'click', function() {
+            infowindowUsuario.open(map,markerUsuario);
+        });
+    }
 
-google.maps.event.addDomListener(window, 'load', initialize);
+
+google.maps.event.addDomListener(window, 'load', localizame);
 </script>
 
 
