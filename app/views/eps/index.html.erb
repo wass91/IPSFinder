@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Eps</h1>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><h3>EPS</h3></div>
 
-<table>
+    <table class="table">
   <thead>
     <tr>
       <th>Nombre</th>
@@ -14,14 +16,14 @@
     <% @eps.each do |ep| %>
       <tr>
         <td><%= ep.nombre %></td>
-        <td><%= link_to 'Show', ep %></td>
-        <td><%= link_to 'Edit', edit_ep_path(ep) %></td>
-        <td><%= link_to 'Destroy', ep, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', ep %></td>
+        <td><%= link_to 'Editar', edit_ep_path(ep) %></td>
+        <td><%= link_to 'Eliminar', ep, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>
 
-<%= link_to 'New Ep', new_ep_path %>
+<%= link_to 'Nueva EPS', new_ep_path %>
