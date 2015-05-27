@@ -1,0 +1,31 @@
+<%# app/views/ips/_list.html.erb %>
+<div id="filterrific_results">
+
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Longitud</th>
+        <th>Latitud</th>
+        <th>Horario atencion</th>
+        <th>Direccion</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @ips.each do |ip| %>
+        <tr>
+          <td><%= ip.nombre %></td>
+          <td><%= ip.horario_atencion %></td>
+          <td><%= ip.direccion %></td>
+          <td><%= link_to 'Show', ip %></td>
+          <td><%= link_to 'Edit', edit_ip_path(ip) %></td>
+          <td><%= link_to 'Destroy', ip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
+

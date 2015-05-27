@@ -1,33 +1,27 @@
-<p id="notice"><%= notice %></p>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
 
  <div class="panel panel-default">
   <!-- Default panel contents -->
   <div class="panel-heading"><h3>IPS</h3></div>
 
-    <table class="table">
-    <thead>
-        <tr>
-        <th>Nombre</th>
-        <th>Horario atencion</th>
-        <th>Direccion</th>
-        <th colspan="3"></th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <% @ips.each do |ip| %>
-        <tr>
-            <td><%= ip.nombre %></td>
-            <td><%= ip.horario_atencion %></td>
-            <td><%= ip.direccion %></td>
-            <td><%= link_to 'Ver', ip %></td>
-            <td ><%= link_to 'Editar', edit_ip_path(ip) %></td>
-            <td><%= link_to 'Eliminar', ip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-        <% end %>
-    </tbody>
-    </table>
-</div>
-<br>
 
 <%= link_to 'Nueva IPS', new_ip_path %>
+<h1>IPS</h1>
+<%= form_tag ips_path, method: :get do %>
+  <div class="form-group">
+    <%= select_tag :ep_id, options_from_collection_for_select(Ep.all, "id", "nombre", params[:ep_id]), prompt: "EPS", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= select_tag :servicio_id, options_from_collection_for_select(Servicio.all, "id", "nombre", params[:servicio_id]), prompt: "Servicio", class: "form-control" %>
+  </div>
+  <%= submit_tag "Buscar", name: nil, class: "btn btn-primary btn-md" %>
+<% end %>
+
+<%= render(
+  partial: 'ips/list',
+  locals: { ips: @ips }
+) %>
+</div>
+</div>

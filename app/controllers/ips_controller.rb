@@ -4,8 +4,15 @@ class IpsController < ApplicationController
   # GET /ips
   # GET /ips.json
   def index
-    @ips = Ip.all
+    @ips = Ip.order("id DESC")
+    if params[:ep_id].present?
+      @ips = @ips.joins(:eps).where("ep_id = ?", params[:ep_id])
+    end
+    if params[:servicio_id].present?
+      @ips = @ips.joins(:servicios).where("servicio_id = ?", params[:servicio_id])
+    end
   end
+
 
   # GET /ips/1
   # GET /ips/1.json
