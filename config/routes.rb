@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :ips
   resources :eps
   get 'ips/index'
-
+  root to: "ips#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

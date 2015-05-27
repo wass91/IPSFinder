@@ -5,6 +5,50 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a  class="dropdown-toggle" data-toggle="dropdown" role="menu" aria-expanded="false">Ips <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="http://localhost:3000/ips/">Mostrar IPS</a></li>
+            <li><a href="http://localhost:3000/ips/new">Crear Ips</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a  class="dropdown-toggle" data-toggle="dropdown" role="menu" aria-expanded="false">Eps <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="http://localhost:3000/eps/">Mostrar EPS</a></li>
+            <li><a href="http://localhost:3000/eps/new">Crear Eps</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a  class="dropdown-toggle" data-toggle="dropdown" role="menu" aria-expanded="false">Servicio <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="http://localhost:3000/servicios/">Mostrar Servicios</a></li>
+            <li><a href="http://localhost:3000/servicios/new">Crear Servicios</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://localhost:3000/usuarios/sign_out">Cerrar Sesión</a></li>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 </head>
 <body>
 
