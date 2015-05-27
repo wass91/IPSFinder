@@ -26,6 +26,10 @@
         }
     
     function initialize() {
+        var directionsDisplay;
+        var directionsService = new google.maps.DirectionsService();
+        directionsDisplay = new google.maps.DirectionsRenderer(); //directions
+    
         var mapProp = {
             center:myCenter,
             zoom:15,
@@ -68,12 +72,32 @@
         google.maps.event.addListener(markerUsuario, 'click', function() {
             infowindowUsuario.open(map,markerUsuario);
         });
+        
+        //directions
+        
+        directionsDisplay.setMap(map);
+        directionsDisplay.setPanel(document.getElementById('directions-panel'));
+        
+        var start = new google.maps.LatLng(latitud,longitud)
+        var end = myCenter;
+        var request = {
+            origin: start,
+            destination: end,
+            travelMode: google.maps.TravelMode.DRIVING
+        };
+        directionsService.route(request, function(response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+            directionsDisplay.setDirections(response);
+            }
+        });
+        
     }
 
 
-google.maps.event.addDomListener(window, 'load', localizame);
+    google.maps.event.addDomListener(window, 'load', localizame);
 </script>
 
 
 
 <div id="googleMap" style="width:700px;height:600px;"></div>
+<div id="directions-panel"></div>
