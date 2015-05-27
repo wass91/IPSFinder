@@ -5,6 +5,10 @@ class IpsController < ApplicationController
   # GET /ips.json
   def index
     @ips = Ip.all
+    @hash = Gmaps4rails.build_markers(@ips) do |musician, marker|
+      marker.lat musician.latitud
+      marker.lng musician.longitud
+    end
   end
 
   # GET /ips/1
@@ -20,6 +24,8 @@ class IpsController < ApplicationController
   # GET /ips/1/edit
   def edit
   end
+  
+  
 
   # POST /ips
   # POST /ips.json
@@ -71,4 +77,6 @@ class IpsController < ApplicationController
     def ip_params
       params.require(:ip).permit(:nombre, :longitud, :latitud, :horario_atencion, :direccion, :ep_ids => [], :servicio_ids => [])
     end
+    
+
 end

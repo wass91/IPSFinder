@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 20150526064303) do
   end
 
   create_table "eps_ips", id: false, force: :cascade do |t|
-    t.integer "ep_id", limit: 4
     t.integer "ip_id", limit: 4
+    t.integer "ep_id", limit: 4
   end
 
   create_table "ips", force: :cascade do |t|

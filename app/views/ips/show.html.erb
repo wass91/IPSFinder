@@ -1,29 +1,47 @@
+  
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Nombre:</strong>
-  <%= @ip.nombre %>
-</p>
-
-<p>
-  <strong>Horario atencion:</strong>
-  <%= @ip.horario_atencion %>
-</p>
-
-<p>
-  <strong>Direccion:</strong>
-  <%= @ip.direccion %>
-</p>
-
-<p>
-    <b>EPS</b>
-    <%= @ip.eps.map {|x| x.to_label}.join ', ' %>
-</p>
-
-<p>
-    <b>Servicios</b>
-    <%= @ip.servicios.map {|x| x.to_label}.join ', ' %>
-</p>
 
 <%= link_to 'Edit', edit_ip_path(@ip) %> |
 <%= link_to 'Back', ips_path %>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCd8AmZ9AKjXd1EdKQnhtB4WcAudJwMHpg"
+  type="text/javascript"></script>
+<script>
+
+function initialize() {
+    var myCenter=new google.maps.LatLng(<%= @ip.latitud %>,<%= @ip.longitud %>);
+    var mapProp = {
+        center:myCenter,
+        zoom:16,
+        mapTypeId:google.maps.MapTypeId.ROADMAP
+    };
+    
+    var infowindow = new google.maps.InfoWindow({
+      content: "<%= @ip.nombre %>"
+                +"<br><%= @ip.horario_atencion %>"
+                +"<br><%= @ip.direccion %>"
+                +"<br><b>EPS</b>"
+                +"<br><%= @ip.eps.map {|x| x.to_label}.join ', ' %>"
+                +"<br><b>Servicios</b>"
+                +"<br><%= @ip.servicios.map {|x| x.to_label}.join ', ' %>"
+    });
+
+    var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+    var marker=new google.maps.Marker({
+        position:myCenter,
+        //animation:google.maps.Animation.BOUNCE,
+    });
+
+    marker.setMap(map);
+    google.maps.event.addListener(marker, 'click', function() {
+        infowindow.open(map,marker);
+    });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+
+
+<div id="googleMap" style="width:700px;height:600px;"></div>

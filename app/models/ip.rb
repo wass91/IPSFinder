@@ -6,4 +6,5 @@ class Ip < ActiveRecord::Base
     def to_label
         "#{nombre}"
     end
+    
 end
